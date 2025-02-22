@@ -5,7 +5,8 @@ Yellow = (255,255,0)
 class player(pygame.sprite.Sprite):
   def __init__(self, mainscreen):
     super().__init__()
-    self.rect = pygame.Rect(-10,10,-10,10)
+    self.image = pygame.image.load("assets/player.png")
+    self.rect = self.image.get_rect()
     self.x = 20
     self.y = 100
     self.radius = 15
@@ -13,7 +14,8 @@ class player(pygame.sprite.Sprite):
     self.origin = (self.x, self.y)
   
   def draw(self, mainscreen):
-    pygame.draw.circle(mainscreen, Yellow, (self.x, self.y), self.radius)
+    mainscreen.blit(self.image, self.rect)
+    #pygame.draw.circle(mainscreen, Yellow, (self.x, self.y), self.radius)
   
   
   def update(self):
