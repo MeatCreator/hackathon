@@ -1,12 +1,35 @@
 import pygame
+#0=grass
+#1=water
+#2=road
+tiles=[
+    [0,1,0,0,0,0,0,0],
+    [0,1,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0]
+]
+sprites = [[None] * 8 for x in range(8)]
+images = [
+    "assets/grass.png",
+    "assets/water.png"
+]
 
-class Background(pygame.sprite.Sprite):
+class Background():
     def __init__(self, screen):
-        super().__init__()
-        self.image = pygame.image.load("assets/grass.png")
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (0, 0)
         self.screen = screen
+        for r in range(0,8):
+            for c in range(0,8):
+                s = pygame.sprite.Sprite()
+                s.image = pygame.image.load(images[tiles[r][c]])
+                s.rect = s.image.get_rect()
+                s.rect.topleft = (c*64, r*64)
+                sprites[r][c]=s
 
     def draw(self):
-        self.screen.blit(self.image, self.rect)
+        for r in range(0,8):
+            for c in range(0,8):
+                self.screen.blit(sprites[r][c].image, sprites[r][c].rect)

@@ -41,14 +41,14 @@ while running:
     screen.fill("purple")
     #p.update()
     # RENDER YOUR GAME HERE
-    p.move()
-    p.draw(screen)
-
     game_background.draw()
+
+
 
     game_player.update()
     game_player.draw(screen)
-  
+    p.move()
+    p.draw(screen)
     # flip() the display to put your work on screen
     pygame.display.flip()
     #pygame.display.update()
