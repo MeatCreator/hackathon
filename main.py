@@ -64,6 +64,8 @@ while running:
         p.move()
         p.draw(screen)
     
+    if currentLevel>0:
+        hud.draw()
     # flip() the display to put your work on screen
     pygame.display.flip()
     #pygame.display.update()
