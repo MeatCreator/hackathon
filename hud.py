@@ -7,7 +7,7 @@ button_sprites = [None,None,None]
 pressed_button_sprites = [None,None,None]
 
 enemy_sprites = [None,None,None]
-enemy_images = ["assets/glorp.png", "assets/ooze.png", "assets/finalboss.png"]
+enemy_images = ["assets/glorp_fullbody.png", "assets/ooze_fullbody.png", "assets/finalboss_fullbody.png"]
 
 enemy_button_sprites = [None,None,None]
 enemy_pressed_button_sprites = [None,None,None]
