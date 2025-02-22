@@ -1,5 +1,6 @@
 import pygame
 import player
+import background
 
 # pygame setup
 pygame.init()
@@ -25,7 +26,9 @@ class Pointer(pygame.sprite.Sprite):
         surface.blit(self.image, self.rect)
 
 p = Pointer()
-player_sprite = player.player(screen)
+game_player = player.player(screen)
+game_background = background.Background(screen)
+
 
 while running:
     # poll for events
@@ -40,9 +43,11 @@ while running:
     # RENDER YOUR GAME HERE
     p.move()
     p.draw(screen)
-    
-    player_sprite.update()
-    player_sprite.draw(screen)
+
+    game_background.draw()
+
+    game_player.update()
+    game_player.draw(screen)
   
     # flip() the display to put your work on screen
     pygame.display.flip()
