@@ -25,6 +25,8 @@ class Pointer(pygame.sprite.Sprite):
         surface.blit(self.image, self.rect)
 
 p = Pointer()
+player_sprite = player.player(screen)
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -38,8 +40,10 @@ while running:
     # RENDER YOUR GAME HERE
     p.move()
     p.draw(screen)
-    player_sprite = player.player(screen)
+    
+    player_sprite.update()
     player_sprite.draw(screen)
+  
     # flip() the display to put your work on screen
     pygame.display.flip()
     #pygame.display.update()
