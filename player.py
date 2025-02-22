@@ -6,7 +6,7 @@ class player(pygame.sprite.Sprite):
   def __init__(self, mainscreen):
     super().__init__()
     self.rect = pygame.Rect(-10,10,-10,10)
-    self.x = 100
+    self.x = 20
     self.y = 100
     self.radius = 15
     self.velocity = 2

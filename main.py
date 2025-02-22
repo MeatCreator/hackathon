@@ -11,8 +11,8 @@ running = True
 pygame.mouse.set_visible(False)
 
 levels = [
-    level.level("assets/lake.png", 200,170, 0),
-    level.level("assets/level1.png",100,100,0),
+    level.level("assets/level1.png",100,100,1),
+    level.level("assets/lake.png", 350,280, 2),
 ]
 
 currentLevel = 0
