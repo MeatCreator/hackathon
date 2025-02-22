@@ -15,7 +15,7 @@ class hud:
     def __init__(self, pointer, level=0):
         self.pointer = pointer
         self.pressed = 4
-        self.computer_pressed = 4
+        self.computer_choice = 4
         self.level = level
         self.confirm_button = pygame.sprite.Sprite()
         self.confirm_button.image = pygame.image.load("assets/confirm_button.png")
@@ -71,7 +71,7 @@ class hud:
             else:
                 surface.blit(button_sprites[i].image, button_sprites[i].rect)
             
-            if self.computer_pressed == i:
+            if self.computer_choice == i:
                 surface.blit(enemy_pressed_button_sprites[i].image, enemy_pressed_button_sprites[i].rect)
             else:
                 surface.blit(enemy_button_sprites[i].image, enemy_button_sprites[i].rect)
@@ -85,14 +85,15 @@ class hud:
 
     def confirm(self):
         result = 2
+        choice = 3
         if self.pressed == 0:
-            result = RockPaperScissorsGame.normal_logic("rock")
+            result, choice = RockPaperScissorsGame.normal_logic("rock")
         elif self.pressed == 1:
-            result =  RockPaperScissorsGame.normal_logic("paper")
+            result, choice =  RockPaperScissorsGame.normal_logic("paper")
         elif self.pressed == 2:
-            result = RockPaperScissorsGame.normal_logic("scissors")
+            result,choice = RockPaperScissorsGame.normal_logic("scissors")
 
-        self.computer_choice = RockPaperScissorsGame.choice
+        self.computer_choice = choice
         
         self.pressed = 4
         #nothing is pressed
