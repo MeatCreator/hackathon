@@ -29,10 +29,6 @@ class hud:
                     collided = True
                     self.pressed = i
                     break
-            if collided == False:
-                self.pressed = 4
-        else:
-            self.pressed = 4
         for i in range(3):
             if self.pressed == i:
                 surface.blit(pressed_button_sprites[i].image, pressed_button_sprites[i].rect)
