@@ -12,8 +12,8 @@ running = True
 pygame.mouse.set_visible(False)
 
 levels = [
-    level.level("assets/level1.png",100,100,1),
-    level.level("assets/lake.png", 350,280, 2),
+    level.level("assets/level1.png",100,100, 1),
+    level.level("assets/lake.png", 350,280,  2),
 ]
 
 currentLevel = 0
@@ -48,7 +48,7 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("black")
+    screen.fill("gray")
     #p.update()
         
     #check for collisions
@@ -56,6 +56,7 @@ while running:
         collision = pygame.sprite.collide_rect(level, game_player)
         if collision and level.levelNum != currentLevel:
             currentLevel = level.levelNum
+            hud.level = currentLevel
             
     if currentLevel==0:
         game_background.draw()
