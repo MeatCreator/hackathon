@@ -5,19 +5,20 @@ pygame.init()
 screen = pygame.display.set_mode((512, 512))
 clock = pygame.time.Clock()
 running = True
+pygame.mouse.set_visible(False)
 
 class Pointer(pygame.sprite.Sprite):
       def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("assets/pointer.png")
         self.rect = self.image.get_rect()
-        self.rect.center=(40,40) 
+        self.rect.center=(0,0) 
  
       def move(self):
-        self.rect.move_ip(0,10)
-        if (self.rect.bottom > 600):
-            self.rect.top = 0
-            self.rect.center = (random.randint(30, 370), 0)
+        x,y = pygame.mouse.get_pos()
+        self.rect.center = (x+32,y+32)
+        
+
  
       def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -34,6 +35,7 @@ while running:
     screen.fill("purple")
     #p.update()
     # RENDER YOUR GAME HERE
+    p.move()
     p.draw(screen)
     # flip() the display to put your work on screen
     pygame.display.flip()
