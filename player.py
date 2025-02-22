@@ -5,6 +5,9 @@ Yellow = (255,255,0)
 class player(pygame.sprite.Sprite):
   def __init__(self, mainscreen):
     super().__init__()
+    self.rect = pygame.Rect(-10,10,-10,10)
+    self.x = 320
+    self.y = 240
     self.x = 200
     self.y = 200
     self.radius = 15
@@ -33,6 +36,8 @@ class player(pygame.sprite.Sprite):
     #           else:
     #             self.y = self.y-15
               
+    self.movement()
+    self.rect.center=(self.x,self.y)
     self.origin = (self.x, self.y)
     self.movement()
 

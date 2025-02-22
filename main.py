@@ -1,6 +1,7 @@
 import pygame
 import player
 import background
+import level
 
 # pygame setup
 pygame.init()
@@ -8,6 +9,12 @@ screen = pygame.display.set_mode((512, 512))
 clock = pygame.time.Clock()
 running = True
 pygame.mouse.set_visible(False)
+
+levels = [
+    level.level("assets/lake.png", 100,100, 1)
+]
+
+currentLevel = 0
 
 class Pointer(pygame.sprite.Sprite):
       def __init__(self):
@@ -40,15 +47,22 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
     #p.update()
-    # RENDER YOUR GAME HERE
-    game_background.draw()
-
-
-
-    game_player.update()
-    game_player.draw(screen)
-    p.move()
-    p.draw(screen)
+        
+    #check for collisions
+    for level in levels:
+        collision = pygame.sprite.collide_rect(level, game_player)
+        if collision and level.levelNum != currentLevel:
+            currentLevel = level.levelNum
+            
+    if currentLevel==0:
+        game_background.draw()
+        for level in levels:
+            level.draw(screen)
+        game_player.update()
+        game_player.draw(screen)
+        p.move()
+        p.draw(screen)
+    
     # flip() the display to put your work on screen
     pygame.display.flip()
     #pygame.display.update()
