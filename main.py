@@ -11,7 +11,8 @@ running = True
 pygame.mouse.set_visible(False)
 
 levels = [
-    level.level("assets/lake.png", 100,100, 1)
+    level.level("assets/lake.png", 200,170, 0),
+    level.level("assets/level1.png",100,100,0),
 ]
 
 currentLevel = 0
@@ -45,7 +46,7 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
+    screen.fill("black")
     #p.update()
         
     #check for collisions
