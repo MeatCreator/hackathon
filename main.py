@@ -2,6 +2,7 @@ import pygame
 import player
 import background
 import level
+import hud
 
 # pygame setup
 pygame.init()
@@ -37,6 +38,7 @@ p = Pointer()
 game_player = player.player(screen)
 game_background = background.Background(screen)
 
+hud = hud.hud()
 
 while running:
     # poll for events
@@ -61,12 +63,11 @@ while running:
             level.draw(screen)
         game_player.update()
         game_player.draw(screen)
-        p.move()
-        p.draw(screen)
     
     if currentLevel>0:
-        hud.draw()
-    # flip() the display to put your work on screen
+        hud.draw(screen)
+    p.move()
+    p.draw(screen)
     pygame.display.flip()
     #pygame.display.update()
     clock.tick(60)  # limits FPS to 60
