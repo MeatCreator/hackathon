@@ -8,6 +8,10 @@ class hud:
     def __init__(self, pointer):
         self.pointer = pointer
         self.pressed = 4
+        self.confirm_button = pygame.sprite.Sprite()
+        self.confirm_button.image = pygame.image.load("assets/confirm_button.png")
+        self.confirm_button.rect = self.confirm_button.image.get_rect()
+        self.confirm_button.rect.center = (256, 350)
         for i in range(3):
             s = pygame.sprite.Sprite()
             s.image = pygame.image.load(button_images[i])
@@ -19,6 +23,7 @@ class hud:
             s2.rect = s.image.get_rect()
             s2.rect.center=(100+i*156,460)
             pressed_button_sprites[i]=s2
+         
 
 
     def draw(self, surface):       
@@ -34,4 +39,5 @@ class hud:
                 surface.blit(pressed_button_sprites[i].image, pressed_button_sprites[i].rect)
             else:
                 surface.blit(button_sprites[i].image, button_sprites[i].rect)
+        surface.blit(self.confirm_button.image, self.confirm_button.rect)
         
