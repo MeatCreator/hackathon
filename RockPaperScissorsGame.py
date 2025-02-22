@@ -2,6 +2,9 @@ import random
 
 choices = ["rock", "paper", "scissors"]
 
+#0 is tie
+#1 is win
+#-1 is lose
 def normal_logic(user_choice=None):
     if user_choice is None:
         print("enter something")
@@ -9,15 +12,15 @@ def normal_logic(user_choice=None):
     
     computer_choice = random.choice(choices)
     
-    print(f"Computer chose: {computer_choice}")
+    print(f"Computer chose: {computer_choice}, User chose: {user_choice}")
     
     if user_choice == computer_choice:
-        print("tie")
+        return 0
     elif (user_choice == "rock" and computer_choice == "scissors") or \
          (user_choice == "paper" and computer_choice == "rock") or \
          (user_choice == "scissors" and computer_choice == "paper"):
-        print("you win")
+        return 1
     else:
-        print("you lose")
+        return -1
 
 #any more specific logic goes here in a new method
