@@ -1,4 +1,5 @@
 import pygame
+import player
 
 # pygame setup
 pygame.init()
@@ -37,6 +38,8 @@ while running:
     # RENDER YOUR GAME HERE
     p.move()
     p.draw(screen)
+    player_sprite = player.player(screen)
+    player_sprite.draw(screen)
     # flip() the display to put your work on screen
     pygame.display.flip()
     #pygame.display.update()
