@@ -53,20 +53,29 @@ while running:
         
     #check for collisions
     for level in levels:
-        collision = pygame.sprite.collide_rect(level, game_player)
-        if collision and level.levelNum != currentLevel:
-            currentLevel = level.levelNum
-            hud.level = currentLevel
+        if level is not None:
+            collision = pygame.sprite.collide_rect(level, game_player)
+            if collision and level.levelNum != currentLevel:
+                currentLevel = level.levelNum
+                hud.level = currentLevel
             
     if currentLevel==0:
         game_background.draw()
         for level in levels:
-            level.draw(screen)
+            if level is not None:
+                level.draw(screen)
         game_player.update()
         game_player.draw(screen)
     
     if currentLevel>0:
-        hud.draw(screen)
+        if(hud.draw(screen)):
+            print("win")
+            #game_player.origin = (game_player.x, game_player.y)
+            levels[currentLevel-1].kill()
+            levels[currentLevel-1] = None
+            currentLevel = 0
+            hud.level = currentLevel
+
     p.move()
     p.draw(screen)
     pygame.display.flip()

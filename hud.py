@@ -64,7 +64,8 @@ class hud:
                     self.pressed = i
                     break
             if pygame.sprite.collide_rect(self.confirm_button, self.pointer) and self.pressed != 4:
-                self.confirm()
+                if (self.confirm()):
+                    return True
         for i in range(3):
             if self.pressed == i:
                 surface.blit(pressed_button_sprites[i].image, pressed_button_sprites[i].rect)
@@ -80,6 +81,7 @@ class hud:
         surface.blit(self.confirm_button.image, self.confirm_button.rect)
         surface.blit(self.player_sprite.image, self.player_sprite.rect)
         surface.blit(enemy_sprites[self.level-1].image, enemy_sprites[self.level-1].rect)
+        return False
         
         
 
@@ -97,5 +99,4 @@ class hud:
         
         self.pressed = 4
         #nothing is pressed
-        if(result == 2):
-            return        
+        return result == 1 
