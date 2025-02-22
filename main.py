@@ -38,7 +38,7 @@ p = Pointer()
 game_player = player.player(screen)
 game_background = background.Background(screen)
 
-hud = hud.hud()
+hud = hud.hud(p)
 
 while running:
     # poll for events
